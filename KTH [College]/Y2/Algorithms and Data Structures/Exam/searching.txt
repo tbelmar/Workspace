@@ -1,0 +1,40 @@
+ALL PROBLEMS COMPLETED
+
+1i.
+// assuming there is a root node
+public String smallestNodeVal() {
+	return smallestNodeVal(root);
+}
+
+private String smallestNodeVal(Node x) {
+	if(x.left == null) return x.val;
+	return smallestNodeVal(x.left);
+}
+
+1ii.
+// assuming there is a root node
+public String largestNodeVal() {
+	return smallestNodeVal(root);
+}
+
+private String largestNodeVal(Node x) {
+	if(x.right == null) return x.val;
+	return smallestNodeVal(x.right);
+}
+
+2. The code first gets a hashcode from a certain key. This hashcode can not be used as an array index as it will likely not fit the array index, so we must
+convert it to a number between 0 and m-1. We start off by masking the hash code to get rid of the first bit. This is because in Two's Complement the first bit
+simply serves to show whether the number is positive or negative, and array indexes will always be positive. Then we get that number and find its remainder
+when dividing by m. This is because the array will be size m, so by finding the remainder we shorten the number to something between 0 and m-1 thus letting it
+fit into the array.
+
+3. The issue with hash tables is that if a hacker knows what the hash function being used is, they can exploit the system. This is why hash tables shouldn't be
+used for encryption when it comes to storing passwords or anything that you might not want the users to be able to see. Additionally, a system may be prone to DDOS
+attacks if an attacker can produce different inputs that produce the same hash value, which would be much harder to prevent than simply checking and preventing
+multiple of the same inputs from being sent in.
+
+4. While Binary Search Symbol Tables are optimal for most operations, insertion is the biggest drawback. As the data structure is held by an array, every 
+insertion/deletion requires that we move the items after it forward or backwards, making insertion an O(N) operation. Conversely, searching in a BSST is
+a O(logN) operation making searching very fast. This means that if our system has few changes made to it, but a lot of searching, we should use BSSTs.
+Alternatively, if the system has a lot of changes being made to it, we should probably use a Binary Search Tree, as it has an O(N) for insertion (and searching) 
+but an average case of O(log N).

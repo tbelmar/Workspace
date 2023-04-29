@@ -1,0 +1,135 @@
+ALL PROBLEMS COMPLETED
+
+1. Quicksort works by choosing a pivot, finding that pivot's place in the list (by putting every element smaller than it to its left and every element greater to its right),
+and then recursively doing the same with the sublist on its left and its right. Theoretically, the best case for Quicksort will be one where we always choose the median as
+pivot, as that will break the list evenly into two equally (or nearly equally) sized lists. The closer to the median, the better. The process of choosing that pivot and 
+separating the list is called partitioning. Normal partitioning in Quicksort involves choosing a random element (usually the first one) in the list as the pivot. Median of 
+Three partitioning, on the other hand, chooses 3 random elements (usually first, middle, and last) from the list and finds their median to use as the pivot.
+
+Normal partitioning often also involves shuffling the array. This is because if the array were to not be completely random (let's say for example if the array's first 15 items
+were already in order), then choosing the first item in the list as pivot could actually affect performance of the array. The best way to ensure we choose a number somewhat close
+to the median with normal partitioning is to make sure it's a completely random number in the list, hence if we don't know that the data is sorted completely randomly, with
+normal partitioning we must shuffle it first.
+
+The advantage with Median of Three partitioning comes by the fact that if you choose the median of 3 random numbers, you're much more likely to be closer to the list's actual
+median rather than if you just choose a random number. There are no significant disadvantages to Median of Three partitioning. It takes up a bit more computing power in actually
+computing the median of the three randomly chosen numbers, but the effect is negligible compared to the possible advantages. Additionally, there is no need to actually shuffle
+the list with Median of Three partitioning as it's scouring through the beginning middle and end of the array for a median will make it less likely for there to be bias when
+choosing the pivot.
+
+2.
+
+Insertion Sort:		// SKIPPING OVER COMPARISONS THAT DON'T RESULT IN INVERSIONS (for simplicity's sake)
+2 5 8 1 7 4 3 6		// begin
+2 5 1 8 7 4 3 6 	// 1 < 8. swap
+2 1 5 8 7 4 3 6 	// 1 < 5. swap
+1 2 5 8 7 4 3 6 	// 1 < 2. swap
+1 2 5 7 8 4 3 6 	// 7 < 8. swap
+1 2 5 7 4 8 3 6 	// 4 < 8. swap
+1 2 5 4 7 8 3 6 	// 4 < 7. swap
+1 2 4 5 7 8 3 6 	// 4 < 5. swap
+1 2 4 5 7 3 8 6 	// 3 < 8. swap
+1 2 4 5 3 7 8 6 	// 3 < 7. swap
+1 2 4 3 5 7 8 6 	// 3 < 5. swap
+1 2 3 4 5 7 8 6 	// 3 < 4. swap
+1 2 3 4 5 7 6 8 	// 6 < 8. swap
+1 2 3 4 5 6 7 8 	// 6 < 7. swap
+
+Quicksort (without Median-of-Three): 
+|x| => x is being used as pivot
+(x y z) => [x y z] is sorted
+
+|2| 5 8 1 7 4 3 6		// begin. partitioning with 2 as pivot
+1 |2| 5 8 7 4 3 6		// move all items < 2 to the left. 2 is now in place
+|1| 2 5 8 7 4 3 6		// sort left subarray [1]
+(1) 2 5 8 7 4 3 6		// left subarray [1] sorted 
+1 2 |5| 8 7 4 3 6		// sort right subarray [5, 8, 7, 4, 3, 6] using 5 as pivot 
+1 2 4 3 |5| 8 7 6 		// move all items < 5 to the left. 5 is now in place
+1 2 |4| 3 5 8 7 6		// sort left subarray [4, 3] using 4 as pivot
+1 2 3 |4| 5 8 7 6		// move all items < 4 to the left. 4 is now in place
+1 2 |3| 4 5 8 7 6		// sort left subarray [3]
+1 2 (3) 4 5 8 7 6		// left subarray [3] is sorted
+1 2 (3 4) 5 8 7 6		// left subarray [3, 4] is sorted
+1 2 3 4 5 |8| 7 6		// sort right subarray [8, 7, 6] using 8 as pivot
+1 2 3 4 5 7 6 |8|		// move all items < 8 to the left. 8 is now in place
+1 2 3 4 5 |7| 6 8		// sort left subarray [7, 6] using 7 as pivot
+1 2 3 4 5 6 |7| 8		// move all items < 7 to the left. 7 is now in place
+1 2 3 4 5 |6| 7 8		// sort left subarray [6]
+1 2 3 4 5 (6) 7 8		// left subarray [6] is sorted
+1 2 3 4 5 (6 7) 8		// left subarray [6, 7] is sorted
+1 2 3 4 5 (6 7 8)		// right subarray [6, 7, 8] is sorted
+1 2 (3 4 5 6 7 8)		// right subarray [3, 4, 5, 6, 7, 8] is sorted
+(1 2 3 4 5 6 7 8)		// array is sorted
+
+Merge Sort:
+|w x y z| => [w, x, y, z] is being sorted
+(w x y z) => [w, x, y, z] is sorted
+|2 5 8 1 7 4 3 6|	Auxiliary:                 	// sort array
+|2 5 8 1| 7 4 3 6	Auxiliary:                 	// sort left subarray [2, 5, 8, 1]
+|2 5| 8 1 7 4 3 6	Auxiliary:                 	// sort left subarray [2, 5]
+|2| 5 8 1 7 4 3 6	Auxiliary:                 	// sort left subarray [2]
+(2) 5 8 1 7 4 3 6	Auxiliary:                 	// [2] is sorted
+2 |5| 8 1 7 4 3 6	Auxiliary:                 	// sort right subarray [5]
+2 (5) 8 1 7 4 3 6	Auxiliary:                 	// [5] is sorted
+(2 5) 8 1 7 4 3 6	Auxiliary: 2 5 		 	// merge [2] and [5]. 2 < 5
+2 5 |8 1| 7 4 3 6	Auxiliary: 2 5 		  	// sort right subarray [8, 1]
+2 5 |8| 1 7 4 3 6	Auxiliary: 2 5 		  	// sort left subarray [8]
+2 5 (8) 1 7 4 3 6	Auxiliary: 2 5 		  	// [8] is sorted
+2 5 8 |1| 7 4 3 6	Auxiliary: 2 5 		  	// sort right subarray [1]
+2 5 8 (1) 7 4 3 6	Auxiliary: 2 5 		  	// [1] is sorted
+2 5 (1 8) 7 4 3 6	Auxiliary: 2 5 8 1	  	// merge [8] and [1]. 8 > 1
+  1 5 1 8 7 4 3 6	Auxiliary: 2 5 1 8	 	// merge [2, 5] and [8, 1]. 2 > 1
+  1 2 1 8 7 4 3 6	Auxiliary: 2 5 1 8	 	// merge [2, 5] and [8, 1]. 2 < 8
+  1 2 5 8 7 4 3 6	Auxiliary: 2 5 1 8	 	// merge [2, 5] and [8, 1]. 5 < 8
+(1 2 5 8) 7 4 3 6	Auxiliary: 2 5 1 8	 	// [1, 2, 5, 8] is sorted
+1 2 5 8 |7 4 3 6|	Auxiliary: 2 5 1 8	 	// sort right subarray [7, 4, 3, 6]
+1 2 5 8 |7 4| 3 6	Auxiliary: 2 5 1 8	 	// sort left subarray [7, 4]
+1 2 5 8 |7| 4 3 6	Auxiliary: 2 5 1 8	 	// sort left subarray [7]
+1 2 5 8 (7) 4 3 6	Auxiliary: 2 5 1 8	 	// [7] is sorted
+1 2 5 8 7 |4| 3 6	Auxiliary: 2 5 1 8	 	// sort right subarray [4]
+1 2 5 8 7 (4) 3 6	Auxiliary: 2 5 1 8	 	// [4] is sorted
+1 2 5 8 (4 7) 3 6	Auxiliary: 2 5 1 8 7 4	 	// merge [7] and [4]. 7 > 4
+1 2 5 8 4 7 |3 6|	Auxiliary: 2 5 1 8 7 4	 	// sort right subarray [3, 6]
+1 2 5 8 4 7 |3| 6	Auxiliary: 2 5 1 8 7 4	 	// sort left subarray [3]
+1 2 5 8 4 7 (3) 6	Auxiliary: 2 5 1 8 7 4	 	// [3] is sorted
+1 2 5 8 4 7 3 |6|	Auxiliary: 2 5 1 8 7 4	 	// sort right subarray [6]
+1 2 5 8 4 7 3 (6)	Auxiliary: 2 5 1 8 7 4	 	// [6] is sorted
+1 2 5 8 4 7 (3 6)	Auxiliary: 2 5 1 8 7 4 3 6	// merge [3] and [6]. 3 < 6
+  1 2 5 8 3 7 3 6	Auxiliary: 2 5 1 8 5 7 3 6 	// merge [5, 7] and [3, 6]. 5 > 3
+  1 2 5 8 3 4 3 6	Auxiliary: 2 5 1 8 5 7 3 6 	// merge [5, 7] and [3, 6]. 5 < 6
+  1 2 5 8 3 4 6 6	Auxiliary: 2 5 1 8 5 7 3 6 	// merge [5, 7] and [3, 6]. 7 > 6
+1 2 5 8 (3 4 6 7)	Auxiliary: 2 5 1 8 5 7 3 6 	// [3, 5, 6, 7] is sorted
+  1 2 5 8 3 4 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 1 < 3
+  1 2 5 8 3 4 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 2 < 3
+  1 2 3 8 3 4 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 5 > 3
+  1 2 3 4 3 4 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 5 > 4
+  1 2 3 4 5 4 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 5 < 6
+  1 2 3 4 5 6 6 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 8 > 6
+  1 2 3 4 5 6 7 7	Auxiliary: 1 2 5 8 3 4 6 7 	// merge [1, 2, 5, 8] and [3, 4, 6, 7]. 8 > 7
+(1 2 3 4 5 6 7 8)	Auxiliary: 1 2 5 8 3 4 6 7 	// [1, 2, 3, 4, 5, 6, 7, 8] sorted
+
+
+3. The method sort should be changed so that it accepts two arguments. Both arguments are Comparable[] arrays but one would be for keys and the other one would be for values. 
+We can call the keys array a and the values array b. The method signature in line 4 would then look like this:
+public static void sort(Comparable[] a, Object[] b)
+
+Then, inside the inner for loop after line 12, we would add another line:
+exch(b, j, j-h);
+
+This is so that when we swap keys in the symbol table, we make sure to also swap the values. Otherwise the keys would point to values that they shouldn't.
+
+3i. To sort the Symbol Table we would call the method like so:
+Sort.sort(keys, values);
+
+Then in order to find a certain value through a key we can simply use binary search on the keys until we find the correct index. Once we do, let's assume we found 
+it in index i in the keys array, in order to get the value all we must do is get values[i].
+
+3ii. To reverse search the symbol table, it's a similar procedure to normal searching. The difference is we can no longer use binary search as the values aren't ordered.
+We must traverse through every value in the values array with a for loop until we find the correct index for the value we're looking for. Then, likewise, if we found the value
+at index i, we can access its key through keys[i].
+
+// assuming someValue was defined by user
+for(int i = 0; i < values.length; i++)
+	if(values[i].equals(someValue)) break;
+
+// keys[i] will now be the value we're looking for

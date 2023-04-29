@@ -1,0 +1,16 @@
+const unsigned char bitmap [] PROGMEM=
+{
+0x00, 0x00, 0x00, 0x00, 0x00
+};
+
+
+
+yPos = -8;
+for (var lines = 0; lines < (image.height/8); lines++){
+     yPos += 8;
+     for (var x = 0; x < image.width; x++) {
+          for (var y = yPos; y < yPos + 8; y++) {
+          image.addPoint(x, y);
+              }
+         }
+}

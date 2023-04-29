@@ -1,0 +1,403 @@
+		TESTTESTTESTTEST
+		TESTTESTTESTTEST
+		TESTTESTTESTTEST
+		TESTTESTTESTTEST
+		Are you on drugs
+________________________________
+Starter:	Oh, Hello! 	|
+		Are you starting|
+		this math course|
+		as well?	|
+--------------------------------|
+|  1  |		Yeah, I guess 	|
+Love		we'll be stuck	|
+		together.	|
+--------------------------------|
+|  2  |		I am! Wanna grab|
+Frndly.		a seat in the 	|
+		classroom?	|
+--------------------------------|
+|  3  |		Hi, yeah I will	|
+Neutral		be reading this	|
+		course.		|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+________________________________|________________________________________________________________________________________________
+Response1:	I wouldn't mind	|
+Love		being stuck with|
+		you if you are	|
+		good with math.	|
+--------------------------------|
+Response2:	Yeah lets sit	|
+Frndly.		together!	|
+		Are you any good|
+		with math?	|
+--------------------------------|
+Response3:	Right, tell me.	|
+Neutral		Are you any good|
+		with math? 	|
+				|
+--------------------------------|
+|  1  |		Well, I am kinda|
+Frndly.		getting the hang|
+		of it.		|
+--------------------------------|
+|  2  |		I mean, I am ok	|
+Neutral		at it i guess.	|
+				|
+--------------------------------|
+|  3  |		Maybe with you	|
+Love		around I'll get	|
+		the hang of it.	|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+________________________________|________________________________________________________________________________________________
+Response1:	Hmmm, maybe we	|
+Frndly.		can study after	|
+		class? Two is	|
+		better than one.|
+--------------------------------|
+Response2:	I feel behind on|
+Neutral		math in general	|
+		maybe we can do	|
+		a study group?	|
+--------------------------------|
+Response3:	I feel the same.|
+Love		We should totaly|
+		study together	|
+		after class!	|
+--------------------------------|
+|  1  |		Maybe we'll 	|
+Neutral		start one	|
+		someday.	|
+--------------------------------|
+|  2  |		I won't survive	|
+Love		this course any |
+		other way.	|
+--------------------------------|
+|  3  |		Together we will|
+Frndly.		ace the course	|
+		for sure!	|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+________________________________|________________________________________________________________________________________________
+Response1:	Right, maybe.	|
+Neutral		Let's head into	|
+		class.		|
+				|
+--------------------------------|
+Response2:	Come on! Let's	|
+Love		sit together in	|
+		class!		|
+				|
+--------------------------------|
+Response3:	For sure! Come	|
+Frndly.		our lesson is 	|
+		about to start!	|
+				|
+________________________________|________________________________________________________________________________________________
+MONOLOGUE
+
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+		
+"Meet me at the	
+cafe once you're
+finished today."
+
+The day flies by
+as you attend
+classes filled
+with knowledge.
+
+
+As you finish 
+your last lesson
+for the day you
+remember...
+
+You are late to
+the cafe! So
+you hurry out
+the building...
+
+_________________________________________________________________________________________________________________________________
+MINIGAME
+_________________________________________________________________________________________________________________________________
+
+_________________________________________________________________________________________________________________________________
+Starter:	Hi, you! 	|
+		Ready to get 	| -das-d-safd-af-sa-fsa-fa-f-afs-
+		started?	|
+				|
+--------------------------------|
+|  1  |		Let's study like|
+Frndly.		never before!	|
+				|
+--------------------------------|
+|  2  |		I am ready now	|
+Love		that I am with	|
+		you.		|
+--------------------------------|
+|  3  |		Let's just dish	|
+Neutral		this days class	|
+		off 		|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+________________________________|________________________________________________________________________________________________
+Response1:	Hell yeah! This	|
+Frndly.		is going to be a| chad made this
+		great studying	|
+		session!	|
+--------------------------------|
+Response2:	Mmmmmmm		|
+Love		I'd always study|
+		if I got to meet|
+		you.		|
+--------------------------------|
+Response3:	You're right.	|
+Neutral		let's get on	|
+		with the work.	|
+				|
+________________________________|________________________________________________________________________________________________
+MONOLOGUE
+
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+
+Both of you sit
+and run through 
+the papers.
+
+Answering the
+questions while
+the cafe buzz
+around you two.
+
+You sit and work	
+in full focus
+when you realize
+the time...
+
+_________________________________________________________________________________________________________________________________
+Starter:	It is getting 	|
+		late, what are 	|
+		you doing later	|
+		this evening?	|
+--------------------------------|
+|  1  |		If you are free	|
+Love		we could hang	|
+		some more.	|
+--------------------------------|
+|  2  |		Nothing planned	|
+Frndly.		I'd love to do	|
+		something though|
+--------------------------------|
+|  3  |		I don't know, I	|
+Neutral		might go home,	|
+		watch a movie.	|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+________________________________|________________________________________________________________________________________________
+Response1:	I wouldn't mind	|
+Love		spending more	|
+		time with you.	|
+		what do you say?|
+--------------------------------|
+Response2:	Maybe we could	|
+Frndly.		figure something|
+		out, what do you|
+		say?		|
+--------------------------------|
+Response3:	Don't you want	|
+Neutral		to do something	|
+		else later	|
+		this evening?	|
+--------------------------------|
+|  1  |		We should def.	|
+Frndly.		do something	|
+		tonight!	|
+--------------------------------|
+|  2  |		Nah maybe	|
+Neutral		not sure.	|
+				|
+--------------------------------|
+|  3  |		I'd love to!	|
+Love				|
+				|
+--------------------------------|
+SELECT				|
+________________________________|________________________________________________________________________________________________
+ENDING
+
+NEUTRAL
+
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+
+FRIENDLY
+
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+
+LOVE
+
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+TESTTESTTESTTEST
+
+
+
+void story (int nextconv, int currentbtn, int currentstage) {
+  fourlines(
+  "Oh, Hello!",
+  "Are you starting",
+  "this math course",
+  "as well?"
+  );
+
+
+ 
+  
+
+ 
+
+  //next response
+
+
+
+
+
+  
+
+
+  
+
+
+  //next response
+
+
+
+
+
+
+
+
+
+
+  //monologue1
+
+  fourlines(
+  "\"Meet me at the",
+  "cafe once you're",
+  "finished today.\"",
+  ""
+  );
+  fourlines(
+  "The day flies by",
+  "as you attend",
+  "classes filled",
+  "with knowledge."
+  );
+  fourlines(
+  "As you finish",
+  "your last lesson",
+  "for the day you",
+  "remember..."
+  );
+  fourlines(
+  "You are late to",
+  "the cafe! So",
+  "you hurry out",
+  "the building..."
+  );
+
+  //Minigame
+
+  fourlines(
+  "Hi, you!",
+  "Ready to get",
+  "started?",
+  ""
+  );
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  //monologue2
+
+  fourlines(
+  "Both of you sit",
+  "and run through",
+  "the papers.",
+  ""
+  );
+  fourlines(
+  "Answering the",
+  "questions while",
+  "the cafe buzz",
+  "around you two."
+  );
+  fourlines(
+  "You sit and work",
+  "in full focus",
+  "when you realize",
+  "the time..."
+  );
+
+  //Dialogue
+
+  fourlines(
+  "It is getting",
+  "late, what are",
+  "you doing later",
+  "this evening?"
+  );
+
+
+
+  
+
+
+
+
+
+
+
+
+  //Last Dialogue
+
+
+
+
+
+  threelines_and_menu(
+  "I'd love to!",
+  "",
+  ""
+  );
+}

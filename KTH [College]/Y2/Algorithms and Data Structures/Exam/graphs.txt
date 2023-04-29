@@ -1,0 +1,82 @@
+ALL PROBLEMS COMPLETED
+
+1. Adjacency matrix is a matrix that has 1 for every connection and 0 for no connection. For the graph shown, this would be the adjacency matrix:
+
+  A B C D E F G H I
+A 0 1 1 0 0 0 0 0 0
+B 1 0 0 1 0 0 0 0 0
+C 1 0 0 0 1 1 1 0 0
+D 0 1 0 0 1 0 0 0 0
+E 0 0 1 1 0 0 1 0 0
+F 0 0 1 0 0 0 1 0 0
+G 0 0 1 0 1 1 0 0 0
+H 0 0 0 0 0 0 0 0 1
+I 0 0 0 0 0 0 0 1 0
+
+An adjacency list is simply a list that contains every vertex and a list of the vertices that that vertex is connected to. For the graph shown,
+this would be the adjacency list:
+
+A -> [B, C]
+B -> [A, D]
+C -> [A, E, F, G]
+D -> [B, E]
+E -> [C, D, G]
+F -> [C, G]
+G -> [C, E, F]
+H -> [I]
+I -> [H]
+
+2. DFS goes through A's adjacent vertices recursively, checking each one (that hasn't yet been visited) using DFS respectively before moving on to the next vertex.
+If E is found, then the path to E is whichever path you're currently on, and you can print out the nodes you visited from last to first.
+The path from A to E would be:
+A -> B -> D -> E
+
+3. BFS starts off by queueing A in a queue and marking it as visited. Then, while the queue isn't empty, it will dequeue an item, mark it as visited, and add its
+adjacent vertices to the queue. It will keep doing this until the queue is empty. In order to find a path, every time it enqueues a vertex, the BFS will also store 
+which vertex the visited vertex came from in an array called edgeTo. In order to find which index in the array belongs to a certain vertex, we could use a Symbol Table
+implementation to associate each vertex with an index. Once the BFS finds E, we can stop the BFS and simply traverse the edgeTo array backwards.
+
+The path from A to E would be:
+A -> C -> E
+
+4i.
+I would make a few simple modifications to the code. 
+First, I would make the method searchGraph return a boolean instead of void. This is so that we can use this method to instead search for whether a certain vertex is reached.
+Then, I would add a parameter to it: int x. x is the vertex we're looking for. searchGraph should return true if it finds a path from v to x.
+After line 11, I would add a boolean lookingForLoop = (v == x) ? true : false;
+Next, on line 13, in the if statement's condition, I would change the condition from (!marked[w]) to (!marked[w] || (w == x && lookingForLoop)). This allows us to return to the first 
+index if we are looking for a loop.
+Inside the actual if statement, I would add a nested if statement: if(w == x) return true;
+After the outer for loop right before the method ends I would add return false;
+The method would end up looking like this:
+
+private boolean searchGraph(Graph G, int v, int x) {
+	marked[v] = true;
+	boolean lookingForLoop = (v == x) ? true : false;
+	for (int w : G.adj(v)) {
+		if (!marked[w] || (w == x && lookingForLoop)) {
+			if(w == x) return true;
+			searchGraph(G, w);
+		}
+	}
+	return false;
+}
+
+With these changes, every time searchGraph is called where v and x are the same, it will look for whether v is part of a loop. Therefore, to create a method that
+allows us to look for a loop, all I have to do is call searchGraph with the same starting and ending vertex.
+My method is the following:
+
+public void searchForLoop(Graph G, int v) {
+	return searchGraph(G, v, v);
+}
+
+4ii. The time complexity would be O(V+E) since it would in the worst case traverse through every Vertex and every Edge. The memory complexity would be O(E), since E would
+be the potential size of the longest path, and that's how many function calls DFS would have to go through to find that path.
+
+4iii.
+For A it would take the following path:
+A -> B -> A 		// A == A. Return True
+			// NOTE this is assuming that we are still to consider the vertices as undirected. Otherwise the path would be the following
+
+For F it would take the following path:
+F -> C -> F		// F == F. Return True

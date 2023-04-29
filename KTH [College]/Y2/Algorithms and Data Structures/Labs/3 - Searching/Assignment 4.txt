@@ -1,0 +1,10 @@
+The Binary Search Symbol Table was clearly slower than the Binary Search Tree. When running 10 concurrent test, the average time it took the BST
+to complete the 1000 words was around 0.0029 seconds. As for the BSST, it took around 0.0032 seconds. These tests were run multiple times to ensure
+the conclusion is correct.
+
+The biggest difference between the BSST and the BST is that the BST is built on Nodes, actually resembling a tree architecture, whereas the BSST is built on
+arrays. This means that, while for searching for a Value, we can expect an O(log N) time complexity from both data structures, insertion is slower for BSTs.
+Finding where the new Node should be inserted still takes O(log N) for both data structures. Actually inserting that Node, however, is an O(N) time complexity
+for BSTs whereas for BSSTs it is only an O(1) time complexity. This is because of the Node structure of BSSTs, where we only have to add this Node to the end of the tree.
+As for the BST, we must adjust every object in the array in order to fit this new object. Additionally we must do so on both the Keys and Values array.
+This makes BSSTs a more time efficient way of implementing binary search.

@@ -1,0 +1,65 @@
+ALL PROBLEMS COMPLETED
+
+1a.
+Time: O(N^2) - Outer for loop is N, inner for loop is N/4. We therefore have O(N^2 / 4) -> O(N^2)
+Memory: O(N^2) - Array a takes up N memory. Array b takes up N*N = N^2 memory (N arrays of size N). We have O(N + N^2) -> O(N^2)
+
+1b.
+Time: O(log N) - i starts off as N and decreases in size by a factor of 2 every iteration. If N was 16 for example, i would be 16 -> 8 -> 4 -> 2 -> 1 -> 0. 
+Doubling N would only increase time by a factor of two making the algorithm O(log N).
+Memory: O(1) - Only memory used is in variable i and variable res, regardless of the size of N.
+
+1c.
+Time: O(N) - i iterates through every number from 0 to N-1. print() is O(1) in time. That makes it time complexity O(N).
+Memory: O(1) - print() function is O(1) in memory, and the only other memory taken up is variable i and j, which are just integers. This is independent of N.
+
+1d.
+Time: O(1) - There are two possible cases. In the first case i is even. That means (i-- % 2 != 0) will return false and res will be returned as 0. In the second
+case i is odd. That means (i-- % 2 != 0) will return true, res will be incremented by 1, and i will be decremented by 1 now making it even. The condition will then
+be true returning res as 1. If we assume i to be a positive integer, this function will never take more than two steps making it O(1).
+Memory: O(1) - The only memory taken up in this function is by the function's location in memory, res, and i. This is independent of N.
+
+2a.
+// assuming that sumIter is inside the LinkedList class
+public int sumIter() {
+	// current will keep track of which element we're currently at
+	private Element current = this.head;
+	
+	// total will keep track of the total sum of the elements in the list
+	int total = 0;
+	
+	// at every iteration, we make current become the next element in the list
+	// if current isn't null, we add its value to total
+	while(current != null) {
+		total += current.item;
+		current = current.next;
+	}
+	
+	return total;
+}
+
+2b.
+Time: O(N) - Given that N = the number of items in the LinkedList, sumIter goes through each item individually, adding each value to total. This makes the
+method run at a time proportional to the size of the LinkedList, hence making it O(N).
+Memory: O(1) - Even though the size of the LinkedList is N, and the elements are saved in memory, this method doesn't actually create any new lists or add
+much memory to the process. The only variable to account for is total, since current is a reference to an object that is already in memory. If my method
+were to copy all the items in the list to an array, for example, or duplicate the list, then its memory complexity would be O(N).
+
+2c.
+
+public int sumRec() {
+	// if no argument is given, we assume the method is to be called from the root of the list, calculating the sum of the total list
+	return sumRec(this.head);	
+}
+
+private int sumRec(Element e) {
+	// base case. stop (and return 0) when e is no longer an element in the list
+	if(e == null) return 0;
+	
+	// if e isn't null, add its value to the value of all the items after it
+	return e.item + sumRec(e.next);
+}
+
+2d.
+Time: O(N). Same reasons given for 2b. sumRec still goes through every item in the list exactly once.
+Memory: O(N). Method calls will be added to the stack proportional to the size of the list, as every item in the list will recursively call the function once.

@@ -1,0 +1,2 @@
+extern skärm: 128x64
+intern skärm: 128x32
