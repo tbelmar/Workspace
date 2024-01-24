@@ -39,9 +39,3 @@ defmodule EnvList do
     [head | remove(tail, key)]
   end
 end
-
-map = [{:apple, 1}, {:pear, 2}, {:orange, 3}]
-
-IO.inspect(EnvList.add(map, :apple, 4))
-IO.inspect(EnvList.remove(map, :apple))
-IO.inspect(EnvList.lookup(map, :apple))

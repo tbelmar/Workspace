@@ -40,11 +40,27 @@ defmodule EnvTree do
     {:node, k, v, left, remove(right, key)}
   end
 
+  def lookup(nil, _) do
+    nil
+  end
+
+  def lookup({:node, key, value, left, right}, key) do
+    {:node, key, value, left, right}
+  end
+
+  def lookup({:node, k, _, left, _}, key) when key < k do
+    lookup(left, key)
+  end
+
+  def lookup({:node, _, _, _, right}, key) do
+    lookup(right, key)
+  end
+
   def leftmost({:node, key, value, nil, _}) do
     {key, value}
   end
 
-  def leftmost({:node, k, v, left, right}) do
+  def leftmost({:node, _, _, left, _}) do
     leftmost(left)
   end
 end
